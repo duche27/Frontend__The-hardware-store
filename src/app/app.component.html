@@ -1,0 +1,283 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+ 
+<div id="generalProductsList" class="container">
+  <div class="row">
+    <div class="col-lg-12 card-margin">
+      <div class="card search-form">
+        <div class="card-body p-0">
+          <form id="search-form">
+            <div class="row">
+              <div class="col-12">
+                <div class="row no-gutters">
+                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Location</option>
+                      <option>Oslo</option>
+                      <option>New York</option>
+                      <option>Madrid</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                    <input type="text" placeholder="Search..." class="form-control" id="search" name="search">
+                  </div>
+                  <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                    <button type="submit" class="btn btn-base">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-search">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-margin">
+        <div class="card-body">
+          <div class="row search-body">
+            <div class="col-lg-12">
+              <div class="search-result">
+                <div class="result-header">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="records">Showing: <b>1-{{products.length < 20 ? products.length : 20}}</b> of <b>{{products.length}}</b> result</div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="result-actions">
+                        <div class="result-sorting">
+                          <span>Sort By:</span>
+                          <select class="form-control border-0" id="exampleOption">
+                            <option value="1">Relevance</option>
+                            <option value="2">Names (A-Z)</option>
+                            <option value="3">Names (Z-A)</option>
+                          </select>
+                        </div>
+                        <div class="result-views">
+                          <button type="button" class="btn btn-soft-base btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-list">
+                              <line x1="8" y1="6" x2="21" y2="6"></line>
+                              <line x1="8" y1="12" x2="21" y2="12"></line>
+                              <line x1="8" y1="18" x2="21" y2="18"></line>
+                              <line x1="3" y1="6" x2="3" y2="6"></line>
+                              <line x1="3" y1="12" x2="3" y2="12"></line>
+                              <line x1="3" y1="18" x2="3" y2="18"></line>
+                            </svg>
+                          </button>
+                          <button type="button" class="btn btn-soft-base btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-grid">
+                              <rect x="3" y="3" width="7" height="7"></rect>
+                              <rect x="14" y="3" width="7" height="7"></rect>
+                              <rect x="14" y="14" width="7" height="7"></rect>
+                              <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="result-body">
+                  <div class="table-responsive">
+                    <table class="table widget-26">
+                      <tbody>
+                        <tr>
+                          <th>Product</th>
+                          <th>Name</th>
+                          <th>Section</th>
+                          <th>Price</th>
+                          <th>Promotion</th>
+                          <th>Purchase</th>
+                        </tr>
+                        <tr *ngFor="let product of products">
+                          <td>
+                            <div class="widget-26-product-emp-img">
+                              <img src="../assets/images/product_box.jpg" alt="ProductImage" />
+                            </div>
+                          </td>
+                          <td>
+                            <div class="widget-26-product-title">
+                              <a href="#">{{product.name}}</a>
+                              <p class="m-0"><a href="#" class="product-description">Description</a> <span
+                                  class="text-muted time">1 days ago</span></p>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="widget-26-product-info">
+                              <p class="type m-0">{{product.section}}</p>
+                              <p class="text-muted m-0">in <span class="location">Oslo, Norway</span></p>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="widget-26-product-salary">{{product.price}} kr</div>
+                          </td>
+                          <td>
+                            <div class="widget-26-product-category bg-soft-base">
+                              <i class="indicator bg-base"></i>
+                              <span>Special offer</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="widget-26-newProduct">
+                              <div class="widget-26-product-emp-img" (click)="addProductToCart(cart, product)">
+                                <img src="../assets/images/newPurchase.png" alt="newPurchase" />
+                              </div>
+                            </div>
+                          </td>
+                        </tr>                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav class="d-flex justify-content-center">
+            <ul class="pagination pagination-base pagination-boxed pagination-square mb-0">
+              <li class="page-item">
+                <a class="page-link no-border" href="#">
+                  <span aria-hidden="true">«</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active"><a class="page-link no-border" href="#">1</a></li>
+              <li class="page-item"><a class="page-link no-border" href="#">2</a></li>
+              <li class="page-item"><a class="page-link no-border" href="#">3</a></li>
+              <li class="page-item"><a class="page-link no-border" href="#">4</a></li>
+              <li class="page-item">
+                <a class="page-link no-border" href="#">
+                  <span aria-hidden="true">»</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="cartGeneralList" class="container">
+  <div class="contentbar">
+    <!-- Start row -->
+    <div class="row">
+      <!-- Start col -->
+      <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="card m-b-30">
+          <div class="card-header">
+            <h5 class="card-title">Cart</h5>
+          </div>
+          <div class="card-body">            
+              <div id="cartMainContentBody" class="">
+                <div class="cart-container">
+                  <div class="cart-head">
+                    <div class="table-responsive">
+                      <table class="table widget-26">
+                        <tbody>
+                          <tr>
+                            <th scope="col">#</th>                            
+                            <th scope="col">Icon</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Action</th>
+                            <th scope="col" class="text-right">Total</th>
+                          </tr>
+                          <tr *ngFor="let cartProduct of cart; let i = index">
+                            <td scope="row">{{i}}</td>
+                            <td><img src="../assets/images/product_icon.png"
+                                class="img-fluid" width="35" alt="product"></td>
+                            <td>{{cartProduct.name}}</td>
+                            <td>
+                              <div class="form-group mb-0">
+                                <input type="number" class="form-control cart-qty" name="cartQty" id="cartQty" value="1">
+                              </div>
+                            </td>
+                            <td class="text-right">{{cartProduct.price}}</td>
+                            <td><a href="#" class="text-danger" (click)="deleteProductFromCart(cart, cartProduct)"><i class="ri-delete-bin-3-line"></i></a></td>
+                            <td>{{cartProduct.price}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="cart-body">
+                    <div class="row">
+                      <div class="col-5">
+                        <div class="order-note">
+                          <form>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input type="search" class="form-control" placeholder="Coupon Code" aria-label="Search"
+                                  aria-describedby="button-addonTags">
+                                <div class="input-group-append">
+                                  <button class="input-group-text" type="submit" id="button-addonTags">Apply</button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="specialNotes">Special Note for this order:</label>
+                              <textarea class="form-control" name="specialNotes" id="specialNotes" rows="3"
+                                placeholder="Message here"></textarea>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="col-7">
+                        <div class="order-total table-responsive ">
+                          <table class="table table-borderless text-right">
+                            <tbody>
+                              <tr>
+                                <td>Sub Total :</td>
+                                <td>{{cartTotalPrice.toFixed(2)}} kr</td>
+                              </tr>
+                              <tr>
+                                <td>Shipping :</td>
+                                <td>100.00 kr</td>
+                              </tr>
+                              <tr>
+                                <td>Tax(25%) :</td>
+                                <td>{{cartTotalPrice !== 0 ? (cartTotalPrice*0.25+10).toFixed(2) : 0}} kr</td>
+                              </tr>
+                              <tr>
+                                <td class="f-w-7 font-18">
+                                  <h4>Amount :</h4>
+                                </td>
+                                <td class="f-w-7 font-18">
+                                  <h4>{{cartTotalPrice !== 0 ? (cartTotalPrice*1.25+10).toFixed(2) : 0}} kr</h4>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart-footer text-right">
+                    <button type="button" onclick="congrats()" id="updateCartButton" class="btn btn-info my-1"><i class="ri-save-line mr-2"></i>Update
+                      Cart</button>
+                    <a href="page-checkout.html" id="checkoutCartButton" class="btn btn-success my-1" (click)="newCartPurchased(cart)">Proceed to Checkout<i
+                        class="ri-arrow-right-line ml-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+      <!-- End col -->
+    </div>
+    <!-- End row -->
+  </div>
+</div>

@@ -1,0 +1,32 @@
+// public productQuantity = 0;
+//   public totalProductPrice = 0;
+// 
+//   public updateSecondTable(data) {
+//     let foundItem = this.secondTableData.find((item) => item.Item === data.Item);
+//     if (foundItem) {
+//       foundItem.Quantity += 1;
+//       foundItem.Price += data.Price;
+//       this.getColumnTotal(); // <-- A call here
+//       return;
+//     }
+//     this.secondTableData.push({
+//       Index: this.secondTableData.length + 1,
+//       Item: data.Item,
+//       Quantity: 1,
+//       Price: data.Price,
+//     })
+//     this.getColumnTotal(); // <-- A call here
+//   }
+// 
+//   public getColumnTotal() {
+//     const { Quantity, Price } = this.secondTableData.reduce((acc, item) => {
+//       acc.Quantity += item.Quantity;
+//       acc.Price += item.Price;
+//       return acc;
+//     }, {
+//       Quantity: 0,
+//       Price: 0
+//     });
+//     this.productQuantity = Quantity;
+//     this.totalProductPrice = Price;
+//   }
