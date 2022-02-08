@@ -1,8 +1,10 @@
 # FrontendTheHarwareStore
 
-The frontend Hardware Store technical test.
+The frontend side of The Hardware Store.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+
+'npm install' for the dependecies + 'npm start'
 
 ## Development server
 
